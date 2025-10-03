@@ -1,0 +1,2 @@
+# Erzwinge korrekten MIME-Type für .ts auf GitHub Pages
+*.ts binary mime=video/mp2t

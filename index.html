@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Video TS Loop</title>
+    <style>
+      html,body{height:100%;margin:0;background:#000;display:flex;align-items:center;justify-content:center}
+      video{width:100%;height:100vh;object-fit:cover;background:#000}
+      .hint{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);color:#fff;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial}
+    </style>
+  </head>
+  <body>
+    <!-- Lege deine TS-Datei neben diese index.html und nenne sie exakt 'abgelaufen.ts' -->
+    <video id="v" autoplay loop controls playsinline>
+      <source src="abgelaufen.ts" type="video/mp2t">
+      Dein Browser unterstützt HTML5-Video nicht.
+    </video>
+    <div class="hint">Autoplay mit Ton ist in Browsern oft blockiert. Klicke einmal ins Video für Ton.</div>
+    <script>
+      // Versuche Ton zu aktivieren, sobald der Nutzer interagiert.
+      const v = document.getElementById('v');
+      function enableSound(){ try{ v.muted=false; v.play().catch(()=>{}); }catch(e){} }
+      window.addEventListener('click', enableSound, {once:true});
+      window.addEventListener('touchstart', enableSound, {once:true});
+    </script>
+  </body>
+</html>
